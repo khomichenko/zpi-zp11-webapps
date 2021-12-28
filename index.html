@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Web Labs | v 0.0001b</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.13/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.13/mode-html.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.13/mode-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.13/ext-beautify.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" ></script>
+    <style>
+        .active {
+            background-color: lightcyan;
+            font-weight: bold;
+        }
+        thead>tr>td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="container pt-4" style="height: 100%">
+    <div id="app" >
+        <router-view></router-view>
+        <h3 style="text-align: center">Звіт з лабораторних робіт з дисципліни "Розробка Веб-Застосуваннь"</h3>
+        <h5 style="text-align: center">Бригада №___ . Студенти групи ZPI-ZP11. Хоміченко Олександр</h5>
+        <p>
+            <div>
+                <table class="table table-bordered" style="height: 72vh;">
+                    <thead>
+                        <tr>
+                            <td :class="{ 'active' : $router.currentRoute.path === '/lab01'}"><router-link to="/lab01">Лабораторна робота №1</router-link></td>
+                            <td :class="{ 'active' : $router.currentRoute.path === '/lab02'}"><router-link to="/lab02">Лабораторна робота №2</router-link></td>
+                            <td :class="{ 'active' : $router.currentRoute.path === '/lab03'}"><router-link to="/lab03">Лабораторна робота №3</router-link></td>
+                            <td :class="{ 'active' : $router.currentRoute.path === '/lab04'}"><router-link to="/lab04">Лабораторна робота №4</router-link></td>
+                            <td :class="{ 'active' : $router.currentRoute.path === '/lab05'}"><router-link to="/lab05">Лабораторна робота №5</router-link></td>
+                            <td :class="{ 'active' : $router.currentRoute.path === '/lab06'}"><router-link to="/lab06">Лабораторна робота №6</router-link></td>
+                            <td :class="{ 'active' : $router.currentRoute.path === '/lab07'}"><router-link to="/lab07">Лабораторна робота №7</router-link></td>
+                            <td :class="{ 'active' : $router.currentRoute.path === '/lab08'}"><router-link to="/lab08">Лабораторна робота №8</router-link></td>
+                            <td :class="{ 'active' : $router.currentRoute.path === '/lab09'}"><router-link to="/lab09">Лабораторна робота №9</router-link></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="3">
+                                <!-- Лаб 1, меню-->
+                                <ol v-if="$router.currentRoute.path=='/lab01'" style="list-style-type: disc">
+                                    <li><router-link :to="$router.currentRoute.path+'?description=1'">Опис предметного середовища</router-link></li>
+                                    <li><router-link :to="$router.currentRoute.path+'?topic=1'">Тема, Мета</router-link>
+                                        <ol style="list-style-type: circle; padding-bottom: 0;">
+                                            <li><router-link :to="$router.currentRoute.path+'?work=1'">Робота</router-link></li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        Структура документа:
+                                        <ol style="list-style-type: circle; padding-bottom: 0;">
+                                            <li><router-link :to="$router.currentRoute.path+'?source_html=1'">Html-код Таблиць</router-link></li>
+                                            <li><router-link :to="$router.currentRoute.path+'?source_form=1'">Html-код Форми</router-link></li>
+                                            <li><router-link :to="$router.currentRoute.path+'?source_image=1'">Html-код Зображення</router-link></li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <router-link :to="$router.currentRoute.path+'?conclusions=1'">Висновки</router-link>
+                                    </li>
+                                </ol>
+                                <!-- Лаб 2, меню-->
+
+                            </td>
+                            <td colspan="6">
+                                <!-- Лаб 1, зміст-->
+                                <div v-if="$router.currentRoute.path=='/lab01' && $router.currentRoute.query.description==1">
+                                    Предметна область є математика. А саме допоміжні інструменти для розрахунків
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab01' && $router.currentRoute.query.topic==1">
+                                    Тема: <b>Онлайн Калькулятор</b><p>
+                                    Мета: Розробити Онлайн Калькулятор з широким набором функцій
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab01' && $router.currentRoute.query.work==1">
+                                    Робота
+                                    <iframe src="lab01/calc.html" style="border:none; width: 100%; height: 60vh"></iframe>
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab01' && $router.currentRoute.query.source_html==1">
+                                    Html-код Таблиць
+                                    <pre class="eHtml"  style="height: 60vh">{{html('lab01/table-sample.html')}}</pre>
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab01' && $router.currentRoute.query.source_form==1">
+                                    Html-код Форми
+                                    <pre class="eHtml"  style="height: 60vh">{{html('lab01/form-sample.html')}}</pre>
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab01' && $router.currentRoute.query.source_image==1">
+                                    Html-код Зображення
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab01' && $router.currentRoute.query.conclusions==1">
+                                    Висновки
+                                </div>
+                                <!-- Лаб 2, зміст-->
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="9">
+                                <!-- <small style="float: right">{{$router.currentRoute.path}} {{$router.currentRoute.query}}</small> -->
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </p>
+    </div>
+    <script type="application/javascript">
+        function applyAce(selector,type) {
+            $(selector).each((s,v)=>{
+                const htmlEditor = ace.edit(v);
+                htmlEditor.getSession().setMode("ace/mode/"+type);
+                htmlEditor.session.setUseWorker(false);
+                htmlEditor.setShowPrintMargin(false);
+                htmlEditor.setReadOnly(true);
+            })
+        }
+        const routes = [];
+        const router = new VueRouter({
+            routes
+        });
+        new Vue({
+            el: '#app',
+            router,
+            methods: {
+                html: function(src){
+                    var res;
+                    jQuery.ajax({
+                        url: src,
+                        success: function(html) {
+                            res = html;
+                        },
+                        async:false
+                    });
+                    return res;
+                }
+            },
+            watch: {
+                $route(to, from) {
+                    if  (to.query.source_html==1 || to.query.source_form==1) {
+                        location.reload();
+                    }
+                }
+            }
+        });
+        applyAce('.eHtml','html')
+</script>
+</body>
+</html>

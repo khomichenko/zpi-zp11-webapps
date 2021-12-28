@@ -1,0 +1,39 @@
+<table id="calc" class="table table-hover table-bordered">
+    <thead>
+    <tr>
+        <th colspan="4"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td onclick="push(7)">7</td>
+        <td onclick="push(8)">8</td>
+        <td onclick="push(9)">9</td>
+        <td onclick="push('/')">:</td>
+    </tr>
+    <tr>
+        <td onclick="push(4)">4</td>
+        <td onclick="push(5)">5</td>
+        <td onclick="push(6)">6</td>
+        <td onclick="push('*')">*</td>
+    </tr>
+    <tr>
+        <td onclick="push('1')">1</td>
+        <td onclick="push('2')">2</td>
+        <td onclick="push('3')">3</td>
+        <td onclick="push('-')">-</td>
+    </tr>
+    <tr>
+        <td onclick="push('0')">0</td>
+        <td onclick="push('.')">.</td>
+        <td></td>
+        <td onclick="push('+')">+</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td onclick="empty()" colspan="1"><i class="bi-arrow-bar-left" title="Очистити"></i></td>
+        <th onclick="calculate()" colspan="3">=</th>
+    </tr>
+    </tfoot>
+</table>
