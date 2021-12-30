@@ -23,7 +23,7 @@
         }
     </style>
 </head>
-<body class="container pt-4" style="height: 100%">
+<body class="container-fluid pt-4 w-75" style="height: 100%">
     <div id="app" >
         <router-view></router-view>
         <h3 style="text-align: center">Звіт з лабораторних робіт з дисципліни "Розробка Веб-Застосуваннь"</h3>
@@ -96,6 +96,43 @@
                                         <router-link :to="$router.currentRoute.path+'?conclusions=1'">Висновки</router-link>
                                     </li>
                                 </ol>
+                                <!-- Лаб 3, меню-->
+                                <ol v-if="$router.currentRoute.path=='/lab03'" style="list-style-type: disc">
+                                    <li><router-link :to="$router.currentRoute.path+'?topic=1'">Тема, Мета</router-link>
+                                        <ol style="list-style-type: circle; padding-bottom: 0;">
+                                            <li><router-link :to="$router.currentRoute.path+'?work=1'">Проект (таблиця)</router-link></li>
+                                            <li><router-link :to="$router.currentRoute.path+'?work_bootstrap=1'">Проект (bootstrap)</router-link></li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        Код проекта:
+                                        <ol style="list-style-type: circle; padding-bottom: 0;">
+                                            <li><router-link :to="$router.currentRoute.path+'?source_tables=1'">За допомогою таблиць</router-link></li>
+                                            <li><router-link :to="$router.currentRoute.path+'?source_blocks=1'">За допомогою div (bootstrap)</router-link></li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <router-link :to="$router.currentRoute.path+'?conclusions=1'">Висновки</router-link>
+                                    </li>
+                                </ol>
+                                <!-- Лаб 4, меню-->
+                                <ol v-if="$router.currentRoute.path=='/lab04'" style="list-style-type: disc">
+                                    <li><router-link :to="$router.currentRoute.path+'?topic=1'">Тема, Мета</router-link>
+                                        <ol style="list-style-type: circle; padding-bottom: 0;">
+                                            <li><router-link :to="$router.currentRoute.path+'?work=1'">Проект</router-link></li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        Завдання:
+                                        <ol style="list-style-type: circle; padding-bottom: 0;">
+                                            <li><router-link :to="$router.currentRoute.path+'?source_task_1=1'">Завдання 1 (Варіант 6)</router-link></li>
+                                            <li><router-link :to="$router.currentRoute.path+'?source_task_2=1'">Завдання 2 (Календар)</router-link></li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <router-link :to="$router.currentRoute.path+'?conclusions=1'">Висновки</router-link>
+                                    </li>
+                                </ol>
                             </td>
                             <td colspan="6">
                                 <!-- Лаб 1, зміст-->
@@ -112,15 +149,15 @@
                                 </div>
                                 <div v-if="$router.currentRoute.path=='/lab01' && $router.currentRoute.query.source_html==1">
                                     Html-код Таблиць
-                                    <pre class="eHtml"  style="height: 60vh">{{html('lab01/table-sample.html')}}</pre>
+                                    <pre class="eHtml"  style="height: 60vh">{{load('lab01/table-sample.html')}}</pre>
                                 </div>
                                 <div v-if="$router.currentRoute.path=='/lab01' && $router.currentRoute.query.source_form==1">
                                     Html-код Форми
-                                    <pre class="eHtml"  style="height: 60vh">{{html('lab01/form-sample.html')}}</pre>
+                                    <pre class="eHtml"  style="height: 60vh">{{load('lab01/form-sample.html')}}</pre>
                                 </div>
                                 <div v-if="$router.currentRoute.path=='/lab01' && $router.currentRoute.query.source_image==1">
                                     Html-код Зображення
-                                    <pre class="eHtml"  style="height: 60vh">{{html('lab01/image-sample.html')}}</pre>
+                                    <pre class="eHtml"  style="height: 60vh">{{load('lab01/image-sample.html')}}</pre>
                                 </div>
                                 <div v-if="$router.currentRoute.path=='/lab01' && $router.currentRoute.query.conclusions==1">
                                     Висновки
@@ -136,35 +173,74 @@
                                 </div>
                                 <div v-if="$router.currentRoute.path=='/lab02' && $router.currentRoute.query.source_lists==1">
                                     Списки
-                                    <pre class="eHtml"  style="height: 60vh">{{html('lab02/lists-sample.html')}}</pre>
+                                    <pre class="eHtml"  style="height: 60vh">{{load('lab02/lists-sample.html')}}</pre>
                                 </div>
                                 <div v-if="$router.currentRoute.path=='/lab02' && $router.currentRoute.query.source_identificators==1">
                                     Ідентифікатори
-                                    <pre class="eHtml"  style="height: 60vh">{{html('lab02/identificators-sample.html')}}</pre>
+                                    <pre class="eHtml"  style="height: 60vh">{{load('lab02/identificators-sample.html')}}</pre>
                                 </div>
                                 <div v-if="$router.currentRoute.path=='/lab02' && $router.currentRoute.query.source_indents==1">
                                     Відступи
-                                    <pre class="eHtml"  style="height: 60vh">{{html('lab02/indents-sample.html')}}</pre>
+                                    <pre class="eHtml"  style="height: 60vh">{{load('lab02/indents-sample.html')}}</pre>
                                 </div>
                                 <div v-if="$router.currentRoute.path=='/lab02' && $router.currentRoute.query.source_floats==1">
                                     Плаваючі елементи
-                                    <pre class="eHtml"  style="height: 60vh">{{html('lab02/floats-sample.html')}}</pre>
+                                    <pre class="eHtml"  style="height: 60vh">{{load('lab02/floats-sample.html')}}</pre>
                                 </div>
                                 <div v-if="$router.currentRoute.path=='/lab02' && $router.currentRoute.query.source_selectors_tagsclasses==1">
                                     Селектори тегу і класу
-                                    <pre class="eCSS"  style="height: 60vh">{{html('lab02/tagsclasses-sample.css')}}</pre>
+                                    <pre class="eCSS"  style="height: 60vh">{{load('lab02/tagsclasses-sample.css')}}</pre>
                                 </div>
                                 <div v-if="$router.currentRoute.path=='/lab02' && $router.currentRoute.query.source_selectors_attrs==1">
                                     Селектори атрибутів
-                                    <pre class="eCSS"  style="height: 60vh">{{html('lab02/attrs-sample.css')}}</pre>
+                                    <pre class="eCSS"  style="height: 60vh">{{load('lab02/attrs-sample.css')}}</pre>
                                 </div>
                                 <div v-if="$router.currentRoute.path=='/lab02' && $router.currentRoute.query.source_selectors_other==1">
                                     Інші селектори
-                                    <pre class="eCSS"  style="height: 60vh">{{html('lab02/other-sample.css')}}</pre>
+                                    <pre class="eCSS"  style="height: 60vh">{{load('lab02/other-sample.css')}}</pre>
                                 </div>
                                 <div v-if="$router.currentRoute.path=='/lab02' && $router.currentRoute.query.source_selectors_mix==1">
                                     Групування селекторів
-                                    <pre class="eCSS"  style="height: 60vh">{{html('lab02/mix-sample.css')}}</pre>
+                                    <pre class="eCSS"  style="height: 60vh">{{load('lab02/mix-sample.css')}}</pre>
+                                </div>
+                                <!-- Лаб 3, зміст-->
+                                <div v-if="$router.currentRoute.path=='/lab03' && $router.currentRoute.query.topic==1">
+                                    Тема: <b>Онлайн Калькулятор</b><p>
+                                    Мета: Розробити Онлайн Калькулятор з широким набором функцій
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab03' && $router.currentRoute.query.work==1">
+                                    Робота (Таблиці)
+                                    <iframe src="project/calc.html" style="border:none; width: 100%; height: 60vh"></iframe>
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab03' && $router.currentRoute.query.work_bootstrap==1">
+                                    Робота (Bootstrap)
+                                    <iframe src="lab04/calc.html" style="border:none; width: 100%; height: 60vh"></iframe>
+                                </div>
+
+                                <div v-if="$router.currentRoute.path=='/lab03' && $router.currentRoute.query.source_tables==1">
+                                    За допомогою таблиць
+                                    <pre class="eHtml"  style="height: 60vh">{{load('project/calc.html')}}</pre>
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab03' && $router.currentRoute.query.source_blocks==1">
+                                    За допомогою div (bootstrap)
+                                    <pre class="eHtml"  style="height: 60vh">{{load('lab03/calc.html')}}</pre>
+                                </div>
+                                <!-- Лаб 4, зміст-->
+                                <div v-if="$router.currentRoute.path=='/lab04' && $router.currentRoute.query.topic==1">
+                                    Тема: <b>Онлайн Калькулятор</b><p>
+                                    Мета: Розробити Онлайн Калькулятор з широким набором функцій
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab04' && $router.currentRoute.query.work==1">
+                                    Робота
+                                    <iframe src="lab04/calc.html" style="border:none; width: 100%; height: 60vh"></iframe>
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab04' && $router.currentRoute.query.source_task_1==1">
+                                    Завдання 1 (Варіант 6)
+                                    <pre class="eJS"  style="height: 60vh">{{load('lab04/task-1.js')}}</pre>
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab04' && $router.currentRoute.query.source_task_2==1">
+                                    Завдання 2 (Календар)
+                                    <pre class="eHtml"  style="height: 60vh">{{load('lab04/task-2.html')}}</pre>
                                 </div>
                             </td>
                         </tr>
@@ -198,7 +274,7 @@
             el: '#app',
             router,
             methods: {
-                html: function(src){
+                load: function(src){
                     var res;
                     jQuery.ajax({
                         url: src,
@@ -220,6 +296,7 @@
         });
         applyAce('.eHtml','html')
         applyAce('.eCSS','css')
+        applyAce('.eJS','javascript')
 </script>
 </body>
 </html>
