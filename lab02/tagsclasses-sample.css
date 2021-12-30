@@ -1,0 +1,7 @@
+table { /*Селектор тега*/
+    zoom: 0.9;
+}
+.help_header { /*Селектор класа*/
+    margin-right: 0.46rem;
+    margin-left: 0.32rem
+}

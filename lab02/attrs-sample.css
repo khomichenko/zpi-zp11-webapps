@@ -1,0 +1,4 @@
+input[type=text] { /*Селектор атрибутів*/
+    border-style: solid;
+    border-width: thin;
+}

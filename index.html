@@ -52,7 +52,7 @@
                                     <li><router-link :to="$router.currentRoute.path+'?description=1'">Опис предметного середовища</router-link></li>
                                     <li><router-link :to="$router.currentRoute.path+'?topic=1'">Тема, Мета</router-link>
                                         <ol style="list-style-type: circle; padding-bottom: 0;">
-                                            <li><router-link :to="$router.currentRoute.path+'?work=1'">Робота</router-link></li>
+                                            <li><router-link :to="$router.currentRoute.path+'?work=1'">Проект</router-link></li>
                                         </ol>
                                     </li>
                                     <li>
@@ -68,7 +68,34 @@
                                     </li>
                                 </ol>
                                 <!-- Лаб 2, меню-->
-
+                                <ol v-if="$router.currentRoute.path=='/lab02'" style="list-style-type: disc">
+                                    <li><router-link :to="$router.currentRoute.path+'?topic=1'">Тема, Мета</router-link>
+                                        <ol style="list-style-type: circle; padding-bottom: 0;">
+                                            <li><router-link :to="$router.currentRoute.path+'?work=1'">Проект</router-link></li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        Частини проекта:
+                                        <ol style="list-style-type: circle; padding-bottom: 0;">
+                                            <li><router-link :to="$router.currentRoute.path+'?source_lists=1'">Списки</router-link></li>
+                                            <li><router-link :to="$router.currentRoute.path+'?source_identificators=1'">Ідентифікатори</router-link></li>
+                                            <li><router-link :to="$router.currentRoute.path+'?source_indents=1'">Відступи</router-link></li>
+                                            <li><router-link :to="$router.currentRoute.path+'?source_floats=1'">Плаваючі елементи</router-link></li>
+                                            <li>
+                                                Селектори
+                                                <ol style="list-style-type: circle; padding-bottom: 0;">
+                                                    <li><router-link :to="$router.currentRoute.path+'?source_selectors_tagsclasses=1'">Селектори тегу і класу</router-link></li>
+                                                    <li><router-link :to="$router.currentRoute.path+'?source_selectors_attrs=1'">Селектори атрибутів</router-link></li>
+                                                    <li><router-link :to="$router.currentRoute.path+'?source_selectors_other=1'">Інші селектори</router-link></li>
+                                                    <li><router-link :to="$router.currentRoute.path+'?source_selectors_mix=1'">Групування селекторів</router-link></li>
+                                                </ol>
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <router-link :to="$router.currentRoute.path+'?conclusions=1'">Висновки</router-link>
+                                    </li>
+                                </ol>
                             </td>
                             <td colspan="6">
                                 <!-- Лаб 1, зміст-->
@@ -81,7 +108,7 @@
                                 </div>
                                 <div v-if="$router.currentRoute.path=='/lab01' && $router.currentRoute.query.work==1">
                                     Робота
-                                    <iframe src="lab01/calc.html" style="border:none; width: 100%; height: 60vh"></iframe>
+                                    <iframe src="project/calc.html" style="border:none; width: 100%; height: 60vh"></iframe>
                                 </div>
                                 <div v-if="$router.currentRoute.path=='/lab01' && $router.currentRoute.query.source_html==1">
                                     Html-код Таблиць
@@ -93,11 +120,52 @@
                                 </div>
                                 <div v-if="$router.currentRoute.path=='/lab01' && $router.currentRoute.query.source_image==1">
                                     Html-код Зображення
+                                    <pre class="eHtml"  style="height: 60vh">{{html('lab01/image-sample.html')}}</pre>
                                 </div>
                                 <div v-if="$router.currentRoute.path=='/lab01' && $router.currentRoute.query.conclusions==1">
                                     Висновки
                                 </div>
                                 <!-- Лаб 2, зміст-->
+                                <div v-if="$router.currentRoute.path=='/lab02' && $router.currentRoute.query.topic==1">
+                                    Тема: <b>Онлайн Калькулятор</b><p>
+                                    Мета: Розробити Онлайн Калькулятор з широким набором функцій
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab02' && $router.currentRoute.query.work==1">
+                                    Робота
+                                    <iframe src="project/calc.html" style="border:none; width: 100%; height: 60vh"></iframe>
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab02' && $router.currentRoute.query.source_lists==1">
+                                    Списки
+                                    <pre class="eHtml"  style="height: 60vh">{{html('lab02/lists-sample.html')}}</pre>
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab02' && $router.currentRoute.query.source_identificators==1">
+                                    Ідентифікатори
+                                    <pre class="eHtml"  style="height: 60vh">{{html('lab02/identificators-sample.html')}}</pre>
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab02' && $router.currentRoute.query.source_indents==1">
+                                    Відступи
+                                    <pre class="eHtml"  style="height: 60vh">{{html('lab02/indents-sample.html')}}</pre>
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab02' && $router.currentRoute.query.source_floats==1">
+                                    Плаваючі елементи
+                                    <pre class="eHtml"  style="height: 60vh">{{html('lab02/floats-sample.html')}}</pre>
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab02' && $router.currentRoute.query.source_selectors_tagsclasses==1">
+                                    Селектори тегу і класу
+                                    <pre class="eCSS"  style="height: 60vh">{{html('lab02/tagsclasses-sample.css')}}</pre>
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab02' && $router.currentRoute.query.source_selectors_attrs==1">
+                                    Селектори атрибутів
+                                    <pre class="eCSS"  style="height: 60vh">{{html('lab02/attrs-sample.css')}}</pre>
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab02' && $router.currentRoute.query.source_selectors_other==1">
+                                    Інші селектори
+                                    <pre class="eCSS"  style="height: 60vh">{{html('lab02/other-sample.css')}}</pre>
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab02' && $router.currentRoute.query.source_selectors_mix==1">
+                                    Групування селекторів
+                                    <pre class="eCSS"  style="height: 60vh">{{html('lab02/mix-sample.css')}}</pre>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
@@ -144,13 +212,14 @@
             },
             watch: {
                 $route(to, from) {
-                    if  (to.query.source_html==1 || to.query.source_form==1) {
+                    if  (Object.keys(to.query).findIndex((k)=>{return k.indexOf('source')>-1})>-1) {
                         location.reload();
                     }
                 }
             }
         });
         applyAce('.eHtml','html')
+        applyAce('.eCSS','css')
 </script>
 </body>
 </html>

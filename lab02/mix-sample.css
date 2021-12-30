@@ -1,0 +1,4 @@
+#calc td, #calc th { /*Селектор ідентифікатора з тегом, згруповані*/
+    text-align: center;
+    cursor: pointer;
+}
