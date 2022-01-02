@@ -11,6 +11,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.13/ace.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.13/mode-html.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.13/mode-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.13/mode-java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.13/mode-properties.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.13/mode-sh.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.13/ext-beautify.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" ></script>
     <style>
@@ -154,6 +157,25 @@
                                         <router-link :to="$router.currentRoute.path+'?conclusions=1'">Висновки</router-link>
                                     </li>
                                 </ol>
+                                <!-- Лаб 6, меню-->
+                                <ol v-if="$router.currentRoute.path=='/lab06'" style="list-style-type: disc">
+                                    <li><router-link :to="$router.currentRoute.path+'?topic=1'">Тема, Мета</router-link>
+                                        <ol style="list-style-type: circle; padding-bottom: 0;">
+                                            <li><router-link :to="$router.currentRoute.path+'?work=1'">Проект</router-link></li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        Налаштування Backend:
+                                        <ol style="list-style-type: circle; padding-bottom: 0;">
+                                            <li><router-link :to="$router.currentRoute.path+'?source_spring=1'">Spring Boot Java Backend</router-link></li>
+                                            <li><router-link :to="$router.currentRoute.path+'?source_controller=1'">Контроллери Backend обробки</router-link></li>
+                                            <li><router-link :to="$router.currentRoute.path+'?source_deployment=1'">Розгортання та запуск</router-link></li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <router-link :to="$router.currentRoute.path+'?conclusions=1'">Висновки</router-link>
+                                    </li>
+                                </ol>
                             </td>
                             <td colspan="6">
                                 <!-- Лаб 1, зміст-->
@@ -290,6 +312,29 @@
                                     Social Buttons
                                     <pre class="eHtml"  style="height: 60vh">{{load('lab05/socials.html')}}</pre>
                                 </div>
+                                <!-- Лаб 6, зміст-->
+                                <div v-if="$router.currentRoute.path=='/lab06' && $router.currentRoute.query.topic==1">
+                                    Тема: <b>Онлайн Калькулятор</b><p>
+                                    Мета: Розробити Онлайн Калькулятор з широким набором функцій
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab06' && $router.currentRoute.query.work==1">
+                                    <iframe src="lab06/calc.html" style="border:none; width: 100%; height: 80vh"></iframe>
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab06' && $router.currentRoute.query.source_spring==1">
+                                    <h6>Spring Boot Java Application</h6>
+                                    <pre class="eJava"  style="height: 60vh">{{load('lab06/spring-app.java')}}</pre>
+                                    <h6>Spring Boot Properties (src/main/resources/application.properties)</h6>
+                                    <pre class="eProperties"  style="height: 60vh">{{load('lab06/application.properties')}}</pre>
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab06' && $router.currentRoute.query.source_controller==1">
+                                    <h6>Контроллери Backend обробки</h6>
+                                    <pre class="eJava"  style="height: 60vh">{{load('lab06/calcController.java')}}</pre>
+                                </div>
+                                <div v-if="$router.currentRoute.path=='/lab06' && $router.currentRoute.query.source_deployment==1">
+                                    <h6>Розгортання та запуск (виконується на Linux cервері)</h6>
+                                    <pre class="eSh"  style="height: 60vh">{{load('lab06/restart.sh')}}</pre>
+                                </div>
+
                             </td>
                         </tr>
                     </tbody>
@@ -307,11 +352,14 @@
     <script type="application/javascript">
         function applyAce(selector,type) {
             $(selector).each((s,v)=>{
-                const htmlEditor = ace.edit(v);
-                htmlEditor.getSession().setMode("ace/mode/"+type);
-                htmlEditor.session.setUseWorker(false);
-                htmlEditor.setShowPrintMargin(false);
-                htmlEditor.setReadOnly(true);
+                const edi = ace.edit(v);
+                edi.getSession().setMode("ace/mode/"+type);
+                edi.session.setUseWorker(false);
+                edi.setShowPrintMargin(false);
+                edi.setReadOnly(true);
+                edi.setOptions({
+                    maxLines: edi.session.getLength()
+                });
             })
         }
         const routes = [];
@@ -345,6 +393,9 @@
         applyAce('.eHtml','html')
         applyAce('.eCSS','css')
         applyAce('.eJS','javascript')
+        applyAce('.eJava','java')
+        applyAce('.eProperties','properties')
+        applyAce('.eSh','sh')
 </script>
 </body>
 </html>

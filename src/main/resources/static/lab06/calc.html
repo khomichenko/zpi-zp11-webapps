@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Calculator | v 0.0001b</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js" ></script>
+    <script src="../project/calc.js" ></script>
+
+    <style>
+        table { /*Селектор тега*/
+            zoom: 0.9;
+        }
+        .help_header { /*Селектор класа*/
+            margin-right: 0.46rem;
+            margin-left: 0.32rem
+        }
+        #calc .col {
+            text-align: center;
+            cursor: pointer;
+            border: solid 1px #777777;
+            margin: 1px;
+            cursor: pointer;
+        }
+        input[type=text] { /*Селектор атрибутів*/
+            margin-top: 3px;
+            border-style: solid;
+            border-width: thin;
+            margin: 0px;
+        }
+        #calc thead tr:first-child { /* Селектори з псевдо */
+            background-color: #9cdbff26;
+        }
+    </style>
+    <script type="application/javascript">
+        function push(c) {
+            document.getElementById("expr").value=document.getElementById("expr").value+c
+        }
+        function calculate() {
+            appCalculate(document.getElementById("expr").value,(res)=>{
+                document.getElementById("expr").value = res
+            })
+        }
+        function empty () {
+            document.getElementById("expr").value = ''
+        }
+    </script>
+</head>
+<body class="container pt-4">
+    <h5>
+        <img src="../project/images/VideViLogo.png" width="70"/>
+        Web-Калькулятор
+    </h5>
+    <p>
+        <div class="row">
+            <div class="col" id="calc">
+                <div class="row">
+                    <div class="col btn btn-outline-success" onclick="push(7)">7</div>
+                    <div class="col btn btn-outline-success" onclick="push(8)">8</div>
+                    <div class="col btn btn-outline-success" onclick="push(9)">9</div>
+                    <div class="col btn btn-outline-primary" onclick="push('/')">:</div>
+                </div>
+                <div class="row">
+                    <div class="col btn btn-outline-success" onclick="push(4)">4</div>
+                    <div class="col btn btn-outline-success" onclick="push(5)">5</div>
+                    <div class="col btn btn-outline-success" onclick="push(6)">6</div>
+                    <div class="col btn btn-outline-primary" onclick="push('*')">*</div>
+                </div>
+                <div class="row">
+                    <div class="col btn btn-outline-success" onclick="push(1)">1</div>
+                    <div class="col btn btn-outline-success" onclick="push(2)">2</div>
+                    <div class="col btn btn-outline-success" onclick="push(3)">3</div>
+                    <div class="col btn btn-outline-primary" onclick="push('-')">-</div>
+                </div>
+                <div class="row">
+                    <div class="col btn btn-outline-success" onclick="push(0)">0</div>
+                    <div class="col btn btn-outline-success" onclick="push('.')">.</div>
+                    <div class="col btn btn-outline-success" ></div>
+                    <div class="col btn btn-outline-primary" onclick="push('+')">+</div>
+                </div>
+                <div class="row">
+                    <div class="col btn btn-outline-danger" onclick="empty()"><i class="bi-arrow-bar-left" title="Очистити"></i></div>
+                    <div class="col btn btn-outline-success" onclick="alert('Розробники: xxx')">?</div>
+                    <div class="col btn btn-outline-success" ></div>
+                    <div class="col btn btn-outline-primary" onclick="calculate('+')">=</div>
+                </div>
+                <div class="row">
+                    <div class="col-12 pl-1 pr-1 pt-1" >
+                        <input id="expr" readonly="true" type="text" class="text-success w-100 text-center" value="" />
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <h6 style="margin: 0.3rem 1rem;">
+                    Допомога:
+                    <span style="float: left;" class="help_header"> ? </span>
+                </h6>
+                <ul>
+                    <li>Цифри <b>0</b> - <b>9</b> - додати цифру числу</li>
+                    <li>Операції <b>+ - * %</b> - арифметичні операції</li>
+                    <li>Точка <b>.</b> - роздільник дробової частини</li>
+                    <li>Команда <i class="bi-arrow-bar-left" onclick="empty()" style="cursor: pointer;" title="Очистити"></i> - очистити все</li>
+                    <li>Команда <b>=</b> - здійснити розрахунки</li>
+                </ul>
+            </div>
+        </div>
+    </p>
+</body>
+</html>
