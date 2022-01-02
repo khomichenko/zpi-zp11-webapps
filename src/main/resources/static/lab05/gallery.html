@@ -1,0 +1,30 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/unitegallery/1.7.40/js/unitegallery.min.js" ></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/unitegallery/1.7.40/css/unite-gallery.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/unitegallery/1.7.40/themes/default/ug-theme-default.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/unitegallery/1.7.40/themes/default/ug-theme-default.min.js"></script>
+
+...
+
+<script type="application/javascript">
+    ...
+    $( document ).ready(function() {
+        ...
+        $("#gallery").unitegallery({
+            slider_zoom_max_ratio: 2,
+            slider_scale_mode: "fit",
+            slider_zoom_step: 1.2
+        });
+    });
+</script>
+
+...
+
+<h3 title="Скріншоти роботи">
+    Скріншоти роботи
+</h3>
+<div id="gallery" style="display:none; overflow: hidden;">
+    <img alt="5+6" src="screenshots/image01.png" data-image="screenshots/image01.png" data-description="5+6">
+    <img alt="5+6=11" src="screenshots/image02.png" data-image="screenshots/image02.png" data-description="5+6=11">
+    <img alt="1.2+36*2" src="screenshots/image03.png" data-image="screenshots/image03.png" data-description="1.2+36*2">
+    <img alt="1.2+36*2=73.2" src="screenshots/image04.png" data-image="screenshots/image04.png" data-description="1.2+36*2=73.2">
+</div>

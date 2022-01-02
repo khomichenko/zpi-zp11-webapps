@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Calculator | v 0.0001b</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js" ></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/unitegallery/1.7.40/js/unitegallery.min.js" ></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/unitegallery/1.7.40/css/unite-gallery.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/unitegallery/1.7.40/themes/default/ug-theme-default.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/unitegallery/1.7.40/themes/default/ug-theme-default.min.js"></script>
+
+    <script src="../project/calc.js" ></script>
+
+    <style>
+        table { /*Селектор тега*/
+            zoom: 0.9;
+        }
+        .help_header { /*Селектор класа*/
+            margin-right: 0.46rem;
+            margin-left: 0.32rem
+        }
+        #calc .col {
+            text-align: center;
+            cursor: pointer;
+            border: solid 1px #777777;
+            margin: 1px;
+            cursor: pointer;
+        }
+        input[type=text] { /*Селектор атрибутів*/
+            margin-top: 3px;
+            border-style: solid;
+            border-width: thin;
+            margin: 0px;
+        }
+        #calc thead tr:first-child { /* Селектори з псевдо */
+            background-color: #9cdbff26;
+        }
+        .socials .box {
+            display: block;
+            float: right;
+            width: 29px;
+            height: 29px;
+            margin: 0 0 0 6px;
+            background: url(https://kpi.ua/themes/bartik_n/images/social.png) no-repeat 0 0;
+        }
+
+        .socials .box.te {
+            background-position: 0 -174px;
+        }
+
+        .socials .box.rss {
+            background-position: 0 -145px;
+        }
+
+        .socials .box.in {
+            background-position: 0 -116px;
+        }
+
+        .socials .box.yt {
+            background-position: 0 -87px;
+        }
+
+        .socials .box.tw {
+            background-position: 0 -58px;
+        }
+
+        .socials .box.fb {
+            background-position: 0 -29px;
+        }
+
+        .socials .box.link {
+            background-position: 0 0px;
+        }
+    </style>
+    <script type="application/javascript">
+        function push(c) {
+            document.getElementById("expr").value=document.getElementById("expr").value+c
+        }
+        function calculate() {
+            appCalculate(document.getElementById("expr").value,(res)=>{
+                document.getElementById("expr").value = res
+            })
+        }
+        function empty () {
+            document.getElementById("expr").value = ''
+        }
+        $( document ).ready(function() {
+            $( "#accordion" ).accordion();
+            $( ".datepicker" ).datepicker({ dateFormat: 'dd-mm-yy' }).datepicker("setDate", new Date());
+            $( document ).tooltip();
+            $("#gallery").unitegallery({
+                slider_zoom_max_ratio: 2,
+                slider_scale_mode: "fit",
+                slider_zoom_step: 1.2
+            });
+        });
+    </script>
+</head>
+<body class="container-fluid">
+    <h5>
+        <img src="../project/images/VideViLogo.png" width="70"/>
+        Web-Калькулятор
+        <input type="text" class="datepicker form-control w-25" style="float: right"/>
+    </h5>
+    <p>
+        <div class="row">
+            <div class="col">
+                <div id="accordion">
+                    <h3 title="Скріншоти роботи">
+                        Скріншоти роботи
+                    </h3>
+                    <div id="gallery" style="display:none; overflow: hidden;">
+                        <img alt="5+6" src="screenshots/image01.png" data-image="screenshots/image01.png" data-description="5+6">
+                        <img alt="5+6=11" src="screenshots/image02.png" data-image="screenshots/image02.png" data-description="5+6=11">
+                        <img alt="1.2+36*2" src="screenshots/image03.png" data-image="screenshots/image03.png" data-description="1.2+36*2">
+                        <img alt="1.2+36*2=73.2" src="screenshots/image04.png" data-image="screenshots/image04.png" data-description="1.2+36*2=73.2">
+                    </div>
+                    <h3 title="Online калькулятор">Online</h3>
+                    <div id="calc">
+                        <div class="row">
+                            <div class="col btn btn-outline-success" title="Цифра 7" onclick="push(7)">7</div>
+                            <div class="col btn btn-outline-success" title="Цифра 8" onclick="push(8)">8</div>
+                            <div class="col btn btn-outline-success" title="Цифра 9" onclick="push(9)">9</div>
+                            <div class="col btn btn-outline-primary" title="Поділити" onclick="push('/')">:</div>
+                        </div>
+                        <div class="row">
+                            <div class="col btn btn-outline-success" title="Цифра 4" onclick="push(4)">4</div>
+                            <div class="col btn btn-outline-success" title="Цифра 5" onclick="push(5)">5</div>
+                            <div class="col btn btn-outline-success" title="Цифра 6" onclick="push(6)">6</div>
+                            <div class="col btn btn-outline-primary" title="Помножити" onclick="push('*')">*</div>
+                        </div>
+                        <div class="row">
+                            <div class="col btn btn-outline-success" title="Цифра 1" onclick="push(1)">1</div>
+                            <div class="col btn btn-outline-success" title="Цифра 2" onclick="push(2)">2</div>
+                            <div class="col btn btn-outline-success" title="Цифра 3" onclick="push(3)">3</div>
+                            <div class="col btn btn-outline-primary" title="Відняти" onclick="push('-')">-</div>
+                        </div>
+                        <div class="row">
+                            <div class="col btn btn-outline-success" title="Цифра 0" onclick="push(0)">0</div>
+                            <div class="col btn btn-outline-success" title="Дробова частина" onclick="push('.')">.</div>
+                            <div class="col btn btn-outline-success" ></div>
+                            <div class="col btn btn-outline-primary" title="Помножити" onclick="push('+')">+</div>
+                        </div>
+                        <div class="row">
+                            <div class="col btn btn-outline-danger" onclick="empty()"><i class="bi-arrow-bar-left" title="Очистити"></i></div>
+                            <div class="col btn btn-outline-success" title="Допомога" onclick="alert('Розробники: xxx')">?</div>
+                            <div class="col btn btn-outline-success" ></div>
+                            <div class="col btn btn-outline-primary" title="Обчислити" onclick="calculate('+')">=</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 pl-1 pr-1 pt-1" >
+                                <input id="expr" readonly="true" type="text" class="text-success w-100 text-center" title="Результат" value="" />
+                            </div>
+                        </div>
+                    </div>
+                    <h3 title="Як користуватися калькулятором?">Допомога</h3>
+                    <div>
+                        <ul>
+                            <li>Цифри <b>0</b> - <b>9</b> - додати цифру числу</li>
+                            <li>Операції <b>+ - * %</b> - арифметичні операції</li>
+                            <li>Точка <b>.</b> - роздільник дробової частини</li>
+                            <li>Команда <i class="bi-arrow-bar-left" onclick="empty()" style="cursor: pointer;" title="Очистити"></i> - очистити все</li>
+                            <li>Команда <b>=</b> - здійснити розрахунки</li>
+                        </ul>
+                        <div class="socials">
+                            <a class="box rss" href="https://kpi.ua/rss.xml" title="Стрічка нових матеріалів сайту КПІ"></a>
+                            <a class="box fb" href="https://www.facebook.com/ntuu.kpi/" title="Офіційна сторінка КПІ в Facebook" target="_blank"></a>
+                            <a class="box tw" href="https://twitter.com/kpiua" title="Офіційнmargin-top: 26px;а стрічка КПІ в Twitter" target="_blank"></a>
+                            <a class="box yt" href="https://www.youtube.com/kpiua" title="Офіційний youtube канал КПІ" target="_blank"></a>
+                            <a class="box link" href="https://www.linkedin.com/company/kpi.ua" title="Офіційна сторінка КПІ в Linkedin" target="_blank"></a>
+                            <a class="box in" href="https://www.instagram.com/kpi.ua/" title="Офіційний Instagram КПІ" target="_blank"></a>
+                            <a class="box te" href="https://kpi.ua/telegram" title="Офіційні канали КПІ"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p>
+</body>
+</html>
