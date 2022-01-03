@@ -30,7 +30,7 @@
     <div id="app" >
         <router-view></router-view>
         <h3 style="text-align: center">Звіт з лабораторних робіт з дисципліни "Розробка Веб-Застосуваннь"</h3>
-        <h5 style="text-align: center">Бригада №___ . Студенти групи ZPI-ZP11.</h5>
+        <h5 style="text-align: center">Бригада №___ . Студенти групи ZPI-ZP11. Я и ты ?</h5>
         <p>
             <div>
                 <table class="table table-bordered" style="height: 72vh;">
@@ -203,7 +203,7 @@
                                     <pre class="eHtml"  style="height: 60vh">{{load('lab01/image-sample.html')}}</pre>
                                 </div>
                                 <div v-if="$router.currentRoute.path=='/lab01' && $router.currentRoute.query.conclusions==1">
-                                    Висновки лаби 1
+                                    Висновки лаби 1 
                                 </div>
                                 <!-- Лаб 2, зміст-->
                                 <div v-if="$router.currentRoute.path=='/lab02' && $router.currentRoute.query.topic==1">
