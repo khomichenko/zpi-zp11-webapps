@@ -20,12 +20,14 @@ public class CalcController {
     @GetMapping(path ="/do", produces = "application/json")
     public @ResponseBody Object doCalc(@RequestParam String expression) {
         Double result = new DoubleEvaluator().evaluate(expression);
+        // зберігаємо історію в базу даних
         service.saveHistory(new CalcHistory(expression,result));
         return result;
     }
 
     @GetMapping(path ="/history", produces = "application/json")
     public @ResponseBody List<CalcHistory> getCalcHistory() {
+        // повертаємо історію в виді json для сайта
         return service.list();
     }
 }
