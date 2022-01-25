@@ -15,3 +15,12 @@ http://instoof.com:8081/#/lab05?work=1
 
 Лабораторна 6
 http://instoof.com:8081/#/lab06?work=1
+
+Лабораторна 7
+http://instoof.com:8081/#/lab0708?work=1
+
+Лабораторна 8
+http://instoof.com:8081/#/lab0708?work=1
+
+Лабораторна 9
+http://instoof.com:8081/#/lab09?work=1
